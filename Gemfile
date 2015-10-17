@@ -20,6 +20,7 @@ gem 'responders', '~> 2.0'
 gem 'bootstrap_form'
 gem 'twitter', '~> 5.3.1'
 gem 'omniauth-twitter', '~> 1.0.1'
+gem 'social-share-button'
 
 
 group :development, :test do

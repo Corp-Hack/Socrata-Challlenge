@@ -1,6 +1,6 @@
 <section class="container-fluid" id="section1">
   <div class="v-center">
-    <h1 class="text-center">Discover Indiana</h1>
+    <h1 class="text-center">DiscoverIndiana</h1>
     <h2 class="text-center lato animate slideInDown">Explore Indiana
       <b>
         Without</b>
@@ -21,57 +21,23 @@
 
 <section class="container-fluid s2stuff" id="section2">
 
-    <article>
-
-    </article>
-
-  <div class="container center s2morestuff">
-    <div class="row">
-      <div id="floating-panel">
-        <b>Start:</b> Your Current Location
-
-
-        <div id="address" type="textbox" styel="line-height:normal" value="Your Location">
-          <b>Parks and Recreation Centers
-          </b>
-        </div>
-       <div id="submit"  styel="line-height:normal" value="Start" onchange="calcRoute();"></div>
-
-        <select id="end" onchange="calcRoute();">
-          <% @destinations.each do |dest| %>
-          <option value="<%= dest.longitude %>, <%= dest.latitude %>"><%= dest.site %></option>
-          <% end %>
-        </select>
-      </div>
-
-      <div class="MapSize">
-        <div id="map"></div>
-      </div>
-      <div id="right-panel"></div>
-    </div>
-
-  </div>
-
-</section>
-
-<section class="section3">
-  <ul class="clearfix list-unstyled">
+  <!-- <ul class="clearfix list-unstyled">
   <% if params[:search_destination] %>
     <li><h1 class="text-center"> Listing Search Results for <%=params[:search_destination] %></h1></li>
-  <% else %>
-    <li><h1 class="text-center">Fun Around Indiana</h1></li>
-  <% end %>
+  <% else %> -->
+    <li><h1 class="text-center" style="color:black">Fun Around Indiana</h1></li>
+  <!-- <% end %>
 <li class="search_bar"><%= form_tag destinations_path, :method => :get, class: "form-inline" do %>
 <%= text_field_tag :search_destination, params[:search_destination], placeholder: 'Search for an Activity', class: "form-control_bills", :autocomplete => :off%>
 <%= submit_tag "Search", class: "btn-xs btn-danger search-bills" %></li>
 <% end %>
-</ul>
+</ul> -->
 <br>
     <div class="container">
       <%@destinations.each_slice(4) do |destination_array|%>
         <div class="row">
           <% destination_array.each do |destination| %>
-            <div class="col-sm-3 col-xs-3">
+            <div class="col-sm-3 col-xs-3 col-xs-12">
               <div class="text-center">
                 <%= render partial: "show_destination", :locals => {:destination => destination}%>
                 <%= link_to(image_tag(destination.picture_url, class: "img-thumbnail"), "#", "data-toggle" => "modal", "data-target" => "#showdestination#{destination.id}") %>
@@ -80,13 +46,49 @@
             </div>
           <% end %>
         </div>
+        <% end %>
       </div>
-      <%  end %>
+
+</section>
+
+<section class="section3" id="section3">
+
+      <article>
+
+      </article>
+
+    <div class="container center s2morestuff">
+      <div class="row">
+        <div id="floating-panel">
+          <b>Start:</b> Your Current Location
+
+
+          <div id="address" type="textbox" styel="line-height:normal" value="Your Location">
+            <b>Parks and Recreation Centers
+            </b>
+          </div>
+         <div id="submit"  styel="line-height:normal" value="Start" onchange="calcRoute();"></div>
+
+          <select id="end" onchange="calcRoute();">
+            <% @destinations.each do |dest| %>
+            <option value="<%= dest.longitude %>, <%= dest.latitude %>"><%= dest.site %></option>
+            <% end %>
+          </select>
+        </div>
+
+        <div class="MapSize">
+          <div id="map"></div>
+          <%= social_share_button_tag("Found the most awesome place to check out on", :popup => "true") %>
+        </div>
+        <div id="right-panel"></div>
+      </div>
+
+    </div>
 
 </section>
 
 
-<section id="section4">
+<!-- <section id="section4">
     <div class="container center">
         <div class="row">
             <div class="col-md-12">
@@ -126,7 +128,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col-sm-3 pull-right">
+            <div class="col-sm-3 col-xs-12 pull-right">
                 <address>
               <strong>Discover Indiana LLC</strong><br>
               Launch Fishers<br>
@@ -140,7 +142,7 @@
             </div>
         </div>
     </div>
-</section>
+</section> -->
 
 
 
