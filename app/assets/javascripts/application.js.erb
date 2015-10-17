@@ -128,7 +128,7 @@ function initMap() {
     if (status === google.maps.GeocoderStatus.OK) {
       resultsMap.setCenter(results[0].geometry.location);
       var image2 = 'assets/star-5.png';
-      var marker2 = new google.maps.Marker({
+      var marker = new google.maps.Marker({
         map: resultsMap,
         position: results[0].geometry.location,
         icon: image2

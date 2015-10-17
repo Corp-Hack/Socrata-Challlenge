@@ -20,16 +20,15 @@
 </section>
 
 <section class="container-fluid s2stuff" id="section2">
-
-  <!-- <ul class="clearfix list-unstyled">
+  <ul class="clearfix list-unstyled">
   <% if params[:search_destination] %>
     <li><h1 class="text-center"> Listing Search Results for <%=params[:search_destination] %></h1></li>
-  <% else %> -->
+  <% else %> 
     <li><h1 class="text-center" style="color:black">Fun Around Indiana</h1></li>
   <!-- <% end %>
 <li class="search_bar"><%= form_tag destinations_path, :method => :get, class: "form-inline" do %>
 <%= text_field_tag :search_destination, params[:search_destination], placeholder: 'Search for an Activity', class: "form-control_bills", :autocomplete => :off%>
-<%= submit_tag "Search", class: "btn-xs btn-danger search-bills" %></li>
+<%= submit_tag "Search", :name => nil, class: "btn-xs btn-danger search-bills" %></li>
 <% end %>
 </ul> -->
 <br>
@@ -46,8 +45,8 @@
             </div>
           <% end %>
         </div>
-        <% end %>
-      </div>
+      <% end %>
+    </div>
 
 </section>
 
@@ -148,22 +147,17 @@
 
 <section class="container-fluid" id="section7">
   <div class="row">
-
-
-    <div class="col-sm-1 col-sm-offset-3 col-xs-4 text-center">
+    <div class="col-sm-1 col-xs-offset-3 col-xs-3 text-center">
       <i class="fa fa-facebook fa-4x"></i>
     </div>
-    <div class="col-sm-1 col-xs-4 text-center">
-      <i class="fa fa-pinterest fa-4x"></i>
-    </div>
-    <div class="col-sm-1 col-xs-4 text-center">
-      <i class="fa fa-google-plus fa-4x"></i>
-    </div>
-    <div class="col-sm-1 col-xs-4 text-center">
+    <div class="col-sm-1 col-xs-3 text-center">
       <i class="fa fa-twitter fa-4x"></i>
     </div>
-    <div class="col-sm-1 col-xs-4 text-center">
-      <i class="fa fa-reddit fa-4x"></i>
+    <div class="col-sm-1 col-xs-3 text-center">
+      <i class="fa fa-google-plus fa-4x"></i>
+    </div>
+    <div class="col-sm-1 col-xs-3 text-center">
+      <i class="fa fa-pinterest fa-4x"></i>
     </div>
   </div>
 </section>
