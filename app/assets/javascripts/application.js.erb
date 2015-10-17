@@ -13,6 +13,7 @@
 //= require jquery
 //= require jquery_ujs
 //= require bootstrap
+//= require social-share-button
 //= require_tree .
 
 //jQuery to collapse the navbar on scroll
@@ -37,10 +38,11 @@ $(function() {
 
 
 /* activate scrollspy menu */
-// $('body').scrollspy({
-//   target: '#navbar-collapsible',
-//   offset: 52
-// });
+    $('body > #navbar-collapisble').scrollspy({ 'target': '#nav',
+                                                'offset': 52 }
+                                              );
+
+
 
 /* smooth scrolling sections */
 $('a[href*=#]:not([href=#])').click(function() {
@@ -71,6 +73,7 @@ $('a[href*=#]:not([href=#])').click(function() {
     }
 });
 
+
 function initMap() {
   <% Destination.all.each_with_index do |dest, index| %>
   var myLatLng<%= index %> = {lat: <%= dest.longitude %>, lng: <%= dest.latitude %>};
@@ -84,7 +87,6 @@ function initMap() {
   });
 
 
-
   function success(position) {
 
   window.coords = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
@@ -94,7 +96,7 @@ function initMap() {
       position: coords,
       map: map,
       title:"You are here!",
-      center: coords,
+      center: window.coords,
       icon: image
   });
 }
@@ -109,19 +111,27 @@ function initMap() {
 
   document.getElementById('submit').addEventListener('click', function() {
     geocodeAddress(geocoder, map);
+    var marker = new google.maps.Marker({
+        position: coords,
+        map: map,
+        title:"You are here!",
+        center: window.coords,
+        icon: image
+    });
   });
 
 
   function geocodeAddress(geocoder, resultsMap) {
   var address = document.getElementById('address').value;
+    var image2 = 'assets/star-5.png';
   geocoder.geocode({'address': address}, function(results, status) {
     if (status === google.maps.GeocoderStatus.OK) {
       resultsMap.setCenter(results[0].geometry.location);
-      // var image = 'assets/star-5.png';
+      var image2 = 'assets/star-5.png';
       var marker = new google.maps.Marker({
         map: resultsMap,
         position: results[0].geometry.location,
-        icon: image
+        icon: image2
       });
     } else {
       alert('Geocode was not successful for the following reason: ' + status);
@@ -168,8 +178,6 @@ function initMap() {
    infowindow<%= index %>.open(map, marker<%= index %>);
   });
   <% end %>
-
-
 
   var onChangeHandler = function() {
     calculateAndDisplayRoute(directionsService, directionsDisplay);
